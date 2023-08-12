@@ -1,4 +1,4 @@
-package com.jp.springbootH2.resources;
+package com.jp.springbootH2.controllers;
 
 import java.util.List;
 
@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jp.springbootH2.entities.User;
-import com.jp.springbootH2.services.UserService;
+import com.jp.springbootH2.entities.Order;
+import com.jp.springbootH2.services.OrderService;
 
 @RestController
-@RequestMapping(value="/users")
-public class UserController {
+@RequestMapping(value="/orders")
+public class OrderController {
 	
 	@Autowired
-	private UserService service;
+	private OrderService service;
 	
 	@GetMapping
-	public ResponseEntity<List<User>> getAll() {
-		List<User> list = service.findAll();
+	public ResponseEntity<List<Order>> getAll() {
+		List<Order> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<User> getById(@PathVariable Long id) {
-		User user = service.findById(id);
+	public ResponseEntity<Order> getById(@PathVariable Long id) {
+		Order user = service.findById(id);
 		return ResponseEntity.ok().body(user);
 	}
 }
